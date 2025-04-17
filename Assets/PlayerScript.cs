@@ -4,39 +4,67 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private Vector3 velocity = new Vector3(0.0f,0.0f,0.0f);
-    
     [SerializeField]
-    float playerSpeed, playerFriction;
+    float playerSpeed, friction;
+    [SerializeField]
+    Rigidbody2D rigidBody;
+
+    private Vector3 velocity = new Vector3(0.0f,0.0f,0.0f);
+    private GameObject holdingBall = null;
+    
+    private GameObject[] balls;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       //change use the ridgid body velocity 
-        velocity *= playerFriction;
-        Vector3 move = Vector3.zero;
+        PlayerMovement();
+        
+        SetGrabbingBall();
+        
+        if (holdingBall != null){
+            Debug.Log(holdingBall);
+        }
+    }
+    
+    void PlayerMovement(){
+        rigidBody.velocity *= friction;
+        Vector2 move = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W)){
-            move.y += playerSpeed;
+            move.y += 1.0f;
         }
         if (Input.GetKey(KeyCode.S)){
-            move.y -= playerSpeed;
+            move.y -= 1.0f;
         }
         if (Input.GetKey(KeyCode.D)){
-            move.x += playerSpeed;
+            move.x += 1.0f;
         }
         if (Input.GetKey(KeyCode.A)){
-            move.x -= playerSpeed;
+            move.x -= 1.0f;
         }
-        
         move = move.normalized;
-        
-        velocity += move * playerSpeed;
-        transform.position += velocity * Time.deltaTime;
+        rigidBody.velocity += move * playerSpeed;       
+    }
+    
+    void SetGrabbingBall(){
+        if (holdingBall != null){
+        }
+
+        balls = GameObject.FindGameObjectsWithTag("Ball"); 
+        float minDist = Mathf.Infinity;
+
+        foreach (GameObject ball in balls){
+            float dist = Vector3.Distance(transform.position,ball.transform.position);
+            if (dist < minDist){
+                minDist = dist;
+                holdingBall = ball;
+            }
+        }       
     }
 }
