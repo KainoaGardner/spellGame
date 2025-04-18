@@ -6,10 +6,9 @@ public class BallMovementScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    float ballSpeed, friction;
+    float ballSpeed;
 
-    [SerializeField]
-    Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
     void Start()
     {
         
@@ -18,6 +17,5 @@ public class BallMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidBody.velocity *= friction;
     }
 }
