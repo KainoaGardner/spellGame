@@ -376,6 +376,7 @@ MonoBehaviour:
   playerSpeed: 1
   rigidBody: {fileID: 1054501588}
   pickupCooldown: 0.5
+  playerId: 0
 --- !u!212 &1054501585
 SpriteRenderer:
   m_ObjectHideFlags: 0

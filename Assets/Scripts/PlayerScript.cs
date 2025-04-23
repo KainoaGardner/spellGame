@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -11,19 +12,23 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rigidBody;
     
     private Vector3 velocity = new Vector3(0.0f,0.0f,0.0f);
-    private GameObject holdingBall = null;
-    
-    private GameObject[] balls;
+    private BallMovementScript holdingBall = null;
+    public List<BallMovementScript> ballScripts;
     private Vector3 pointingDirection;
     
-    public float pickupCooldown = 1.0f;
+    [SerializeField]
+    float pickupCooldown;
+    
+    [SerializeField]
+    int playerId,colorIndex;
+    
     private float pickupCounter = 0;
     private float throwStrength = 30;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -42,11 +47,10 @@ public class PlayerScript : MonoBehaviour
         }
         
         if (holdingBall != null && Input.GetMouseButtonDown(0)){
-            Rigidbody2D ballRigidBody = holdingBall.GetComponent<Rigidbody2D>();
             holdingBall = null;
             pickupCounter += Time.deltaTime;
 
-            ballRigidBody.velocity = pointingDirection * throwStrength * ballRigidBody.mass;
+            holdingBall.rigidBody2D.velocity = pointingDirection * throwStrength * holdingBall.rigidBody2D.mass;
         }
         
         
@@ -72,17 +76,15 @@ public class PlayerScript : MonoBehaviour
     }
     
     void SetGrabbingBall(){
-        GameObject tempHolding = null;
+        BallMovementScript tempHolding = null;
         if (holdingBall != null || pickupCounter != 0){
             return;
         }
 
-        balls = GameObject.FindGameObjectsWithTag("Ball"); 
         float minDist = Mathf.Infinity;
-
-        foreach (GameObject ball in balls){
+        foreach (BallMovementScript ball in ballScripts){
             float dist = Vector3.Distance(transform.position,ball.transform.position);
-            if (dist < minDist){
+            if (dist < minDist && ball.holder == -1){
                 minDist = dist;
                 tempHolding = ball;
             }
@@ -90,6 +92,7 @@ public class PlayerScript : MonoBehaviour
         
         if (minDist < transform.localScale.x * 2.0){
             holdingBall = tempHolding;
+            holdingBall.holder = playerId;
         }
     }
     
@@ -108,6 +111,5 @@ public class PlayerScript : MonoBehaviour
         float holdAngle = Mathf.Atan2(pointingDiff.y,pointingDiff.x);
         pointingDirection = new Vector3(Mathf.Cos(holdAngle),Mathf.Sin(holdAngle));
         pointingDirection = pointingDiff.normalized;
-       
     }
 }

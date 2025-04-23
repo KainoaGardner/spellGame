@@ -161,10 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8712d8d79b394f038ab33c90f179e023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 0
+  minPickupSpeed: 0.5
   rigidBody2D: {fileID: 1202700243116405862}
   ballCollider: {fileID: 2034747064263659297}
-  topWall: {fileID: 0}
-  botWall: {fileID: 0}
-  rightWall: {fileID: 0}
-  leftWall: {fileID: 0}
+  spriteRenderer: {fileID: 199698352466908416}
+  holder: -1
