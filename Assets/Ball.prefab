@@ -103,7 +103,7 @@ Rigidbody2D:
   m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e33eac49502800fe8b736853d30a0e99, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -162,4 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 0
-  rigidBody: {fileID: 1202700243116405862}
+  rigidBody2D: {fileID: 1202700243116405862}
+  ballCollider: {fileID: 2034747064263659297}
+  topWall: {fileID: 0}
+  botWall: {fileID: 0}
+  rightWall: {fileID: 0}
+  leftWall: {fileID: 0}

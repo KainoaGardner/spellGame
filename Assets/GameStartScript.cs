@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameStartScript : MonoBehaviour
 {
-    public GameObject Ball;
+    [SerializeField]
+    GameObject Ball,Walls;
+    
     // Start is called before the first frame update
     void Start()
     {

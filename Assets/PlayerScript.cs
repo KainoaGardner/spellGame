@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject[] balls;
     private Vector3 pointingDirection;
     
-    private float pickupCooldown = 1.0f;
+    public float pickupCooldown = 1.0f;
     private float pickupCounter = 0;
     private float throwStrength = 30;
 
@@ -29,7 +29,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         SetPointingDireciton();
         PlayerMovement();
         SetGrabbingBall();

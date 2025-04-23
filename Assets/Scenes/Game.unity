@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 1
   rigidBody: {fileID: 1054501588}
+  pickupCooldown: 0.5
 --- !u!212 &1054501585
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -924,6 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ball: {fileID: 3168621334783956689, guid: 730e2ea77b1e3208daac685fa4b2b24e, type: 3}
+  Walls: {fileID: 1924920229}
 --- !u!4 &1733057445
 Transform:
   m_ObjectHideFlags: 0

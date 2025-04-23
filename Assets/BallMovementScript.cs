@@ -8,14 +8,20 @@ public class BallMovementScript : MonoBehaviour
     [SerializeField]
     float ballSpeed;
 
-    public Rigidbody2D rigidBody;
+    [SerializeField]
+    Rigidbody2D rigidBody2D;
+
+    [SerializeField]
+    CircleCollider2D ballCollider;
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 }
