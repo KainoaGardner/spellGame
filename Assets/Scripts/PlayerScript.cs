@@ -22,6 +22,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     int playerId,colorIndex;
     
+    [SerializeField]
+    Global global;
+    
     private float pickupCounter = 0;
     private float throwStrength = 30;
     
@@ -47,10 +50,10 @@ public class PlayerScript : MonoBehaviour
         }
         
         if (holdingBall != null && Input.GetMouseButtonDown(0)){
-            holdingBall = null;
             pickupCounter += Time.deltaTime;
-
             holdingBall.rigidBody2D.velocity = pointingDirection * throwStrength * holdingBall.rigidBody2D.mass;
+            holdingBall.held = false;
+            holdingBall = null;
         }
         
         
@@ -93,6 +96,8 @@ public class PlayerScript : MonoBehaviour
         if (minDist < transform.localScale.x * 2.0){
             holdingBall = tempHolding;
             holdingBall.holder = playerId;
+            holdingBall.spriteRenderer.color = new Color(255,0,0);
+            holdingBall.held = true;
         }
     }
     

@@ -14,11 +14,11 @@ public class BallMovementScript : MonoBehaviour
     [SerializeField]
     CircleCollider2D ballCollider;
     
-    [SerializeField]
-    SpriteRenderer spriteRenderer;
-
+    public SpriteRenderer spriteRenderer;
     
     public int holder; 
+    public bool held;
+
 
     void Start()
     {
@@ -28,7 +28,9 @@ public class BallMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (holder != -1 && rigidBody2D.velocity.sqrMagnitude < minPickupSpeed){
+
+        if (holder != -1 && rigidBody2D.velocity.sqrMagnitude < minPickupSpeed && !held){
+            Debug.Log("back to -1");
             holder = -1;
             spriteRenderer.color = new Color(255,255,255);
         }

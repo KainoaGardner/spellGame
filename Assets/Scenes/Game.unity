@@ -375,8 +375,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 1
   rigidBody: {fileID: 1054501588}
+  ballScripts: []
   pickupCooldown: 0.5
   playerId: 0
+  colorIndex: 0
+  global: {fileID: 1679719598}
 --- !u!212 &1054501585
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -766,6 +769,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1924920230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1679719597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679719599}
+  - component: {fileID: 1679719598}
+  m_Layer: 0
+  m_Name: Global
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1679719598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679719597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c8b5cca08e39bd99b58b59fa549e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 231, g: 76, b: 60, a: 1}
+  - {r: 230, g: 126, b: 34, a: 1}
+  - {r: 241, g: 196, b: 15, a: 1}
+  - {r: 46, g: 204, b: 113, a: 1}
+  - {r: 52, g: 152, b: 219, a: 1}
+  - {r: 155, g: 89, b: 182, a: 1}
+  - {r: 236, g: 240, b: 241, a: 1}
+  - {r: 18, g: 18, b: 18, a: 1}
+--- !u!4 &1679719599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679719597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.972107, y: 7.0555077, z: 5.870714}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722348743
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ball: {fileID: 3168621334783956689, guid: 730e2ea77b1e3208daac685fa4b2b24e, type: 3}
   Walls: {fileID: 1924920229}
+  playerScript: {fileID: 1054501584}
 --- !u!4 &1733057445
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,3 +1173,4 @@ SceneRoots:
   - {fileID: 1733057445}
   - {fileID: 1054501586}
   - {fileID: 1924920230}
+  - {fileID: 1679719599}
